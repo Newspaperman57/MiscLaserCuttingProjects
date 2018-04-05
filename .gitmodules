@@ -1,0 +1,3 @@
+[submodule "lasercutDrawer"]
+	path = lasercutDrawer
+	url = git@github.com:Newspaperman57/lasercutDrawer.git
