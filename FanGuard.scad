@@ -7,7 +7,7 @@ module _fin(dia, thickness) {
 	}
 }
 
-module fanGuard(materialThickness, fanRadius, centerRadius, finRadius, finThickness, fins) {
+module reverseFanGuard(materialThickness, fanRadius, centerRadius, finRadius, finThickness, fins) {
 	difference() {
 		circle(d=fanRadius+finThickness*2);
 		circle(d=fanRadius);
@@ -23,4 +23,14 @@ module fanGuard(materialThickness, fanRadius, centerRadius, finRadius, finThickn
 	}
 }
 
+module fanGuard(materialThickness, fanRadius, centerRadius, finRadius, finThickness, fins) {
+	difference() {
+		circle(d=fanRadius);
+		reverseFanGuard(materialThickness, fanRadius, centerRadius, finRadius, finThickness, fins);
+	}
+}
+
+translate([-50,-50]) {
+	square(100,100);
+}
 fanGuard(3, fanRadius=40, centerRadius=20, finRadius=20, finThickness=2, fins=12);
