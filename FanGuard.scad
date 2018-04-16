@@ -23,12 +23,12 @@ module reverseFanGuard(materialThickness, fanRadius, centerRadius, finRadius, fi
 	}
 }
 
-module fanGuard(materialThickness, fanRadius, screwSpacing, centerRadius, finRadius, finThickness, fins) {
+module fanGuard(materialThickness, fanRadius, screwSpacing, centerRadius, finRadius, finThickness, fins, screwMountSize=5.5) {
 	difference() {
 		circle(d=fanRadius);
 		reverseFanGuard(materialThickness, fanRadius, centerRadius, finRadius, finThickness, fins);
 	}
-	fanScrews(screwSpacing, 5.5);
+	fanScrews(screwSpacing, screwMountSize);
 }
 
 module fanScrews(screwSpacing, screwSize) {
