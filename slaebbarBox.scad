@@ -13,18 +13,18 @@ airVentY = boxH-materialThickness*9;
 
 moboRiserScrewHoleSize = 3;
 fanMountSpacing = 32;
-FanMountScrew = 4;
-speakonDiameter = 20;
+FanMountScrew = 5;
+speakonDiameter = 23.5;
 speakonWidth = 26;
 DATUMX = INCH(-.650+12);
 DATUMY = 0;
 DATUMZ = INCH(.400); // From face of mobo
-moboRiserHeight = 4;
+moboRiserHeight = 6;
 moboSpaceX = 12; // Fan width
 function INCH(x) = x*25.4; 
 
 difference() {
-	box(boxW,boxD,boxH, materialThickness, drawText=true, inside=true, laserRemoves=0.1);
+	box(boxW,boxD,boxH, materialThickness, drawText=false, inside=true, laserRemoves=0.1);
 	translate([(boxD+1+materialThickness*2)*3+materialThickness+boxD/3/2,25+materialThickness]) {
 		fanGuard(3, fanRadius=40, screwSpacing=fanMountSpacing, screwMountSize=FanMountScrew, centerRadius=20, finRadius=20, finThickness=2, fins=12);
 		translate([(boxD)/3, 0]) {
