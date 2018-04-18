@@ -22,10 +22,11 @@ module lampShadePart(radius, width, fingerDepth, materialThickness) {
                 circle(r=innerRadius);
             translate([0, -radius])
                 square(radius*2);
+
             translate([-fingerDepth, radius-materialThickness*2])
-                square([fingerDepth , materialThickness]);
+                square([9000, materialThickness]);
             translate([-fingerDepth, -radius+materialThickness])
-                square([fingerDepth , materialThickness]);
+                square([9000, materialThickness]);
         }
     }
 }
@@ -35,15 +36,16 @@ module lampShade2D(shades, radius, centerRadius, materialThickness, wireHole) {
     radius = 80;
     centerRadius = 30;
     materialThickness = 3;
+    totalWidth = 55;
     fingerDepth = materialThickness;
     for(i = [0:shades-1]) {
-        translate([40*i, 0])
+        translate([totalWidth*i, 0])
             lampShadePart(radius , 20, fingerDepth, materialThickness);
     }
-    translate([40*(shades-1)+centerRadius, radius-centerRadius]) {
+    translate([totalWidth*(shades-1)+centerRadius, radius-centerRadius]) {
         lampShadeCenter(centerRadius , shades, materialThickness, fingerDepth);
     }
-    translate([40*(shades-1)+centerRadius*3+1, radius-centerRadius]) {
+    translate([totalWidth*(shades-1)+centerRadius*3+1, radius-centerRadius]) {
         lampShadeCenter(centerRadius , shades, materialThickness, fingerDepth, wireHole);
     }
 }
@@ -52,7 +54,7 @@ module lampShade3D(shades, radius, centerRadius, materialThickness, wireHole) {
     fingerDepth = materialThickness;
     translate([0, 0, radius*2]) {
         for(i = [0:shades]) {
-            rotate([90, 0, i*(360/shades)+2.5]) {
+            rotate([90, 0, i*(360/shades)+3]) {
                 translate([radius+centerRadius-fingerDepth*2, 0]) {
                     rotate(180) {
                         linear_extrude(materialThickness) {
@@ -79,6 +81,7 @@ module lampShade3D(shades, radius, centerRadius, materialThickness, wireHole) {
     }
 }
 
+$fn = 128;
 color([150/255, 111/255, 51/255]) {
-lampShade2D(shades = 24, radius = 80, centerRadius = 30, materialThickness = 3, wireHole = 4);
+lampShade3D(shades = 24, radius = 80, centerRadius = 18, materialThickness = 3, wireHole = 4);
 }
