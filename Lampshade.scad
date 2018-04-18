@@ -83,5 +83,8 @@ module lampShade3D(shades, radius, centerRadius, materialThickness, wireHole) {
 
 $fn = 128;
 color([150/255, 111/255, 51/255]) {
-lampShade3D(shades = 24, radius = 80, centerRadius = 18, materialThickness = 3, wireHole = 4);
+lampShade3D(shades = 24, radius = 100, centerRadius = 18, materialThickness = 3, wireHole = 4);
 }
+color([0.9765, 0.8431, 0.4941])
+    translate([0, 0, 80])
+        cylinder(h=90, d=35);
