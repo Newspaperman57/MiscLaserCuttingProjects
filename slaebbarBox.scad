@@ -7,7 +7,7 @@ $fn=64;
 materialThickness = 3;
 boxW = 185;
 boxD = 185;
-boxH = 50+6; // Allow space for SSD
+boxH = 50+6+4; // Allow space for SSD + margin
 
 airVentY = boxH-materialThickness*9;
 
